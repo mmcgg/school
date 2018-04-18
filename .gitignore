@@ -40,6 +40,7 @@ Thumbs.db
 # Data #
 ######################
 *.pptx
+*.autosave
 *.png
 *.jpg
 *.mat
