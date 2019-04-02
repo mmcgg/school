@@ -170,6 +170,3 @@ print "Io semi-major axis in Jupiter radii: ",aIo/radiusJupiter
 print "Europa semi-major axis in solar radii: ",aEuropa/radiusJupiter
 print "Ganymede semi-major axis in solar radii: ",aGanymede/radiusJupiter
 print "Himalia semi-major axis in solar radii: ",aHimalia/radiusJupiter
-
-
-
