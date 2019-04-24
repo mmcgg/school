@@ -84,7 +84,19 @@ for t=0:dt:10
 
     xhathist = [xhathist, xhat];
     
-    ehist = [ehist, x-xhat];    
+    ehist = [ehist, x-xhat];
+B = eye(2);
+C = [-1,1];
+D = [2,1];
+
+sys = ss(A,B,C,D);
+
+msys = minreal(sys);
+
+msys.A
+msys.B
+msys.C
+msys.D;    
 end
 t=0:dt:10;
 figure(3)

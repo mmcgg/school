@@ -13,23 +13,37 @@ D = [0];
 rank(obsv(A,C))
 
 %% Part B
-syms a b c real
+syms s a b c real
 k = [a b c]';
-bla = simplify(eig(A+k*C))
-simplify(det(-eye(3)-(A+k*C)))
+%k = [8 28 -2]';
+simplify(det(s*eye(3)-(A+k*C)))
 
-ans = solve(det(-eye(3)-(A+k*C)))
+% For three eigenvalues at -1, we want this characteristic equation to be
+% (s+1)^3 = s^3 + 3s^2 + 3s + 1
 
-k = [ans.a,ans.b,ans.c]';
-k = [1.0,1.0,-15/4]';
-%k = [1.0,8.5,0]';
-eig(A+k*C)
+% From the s^2 term
+% -a + -c - 3 = 3
+% -a + -c =  6
 
-% Could probably use this somehow...
-K = place(A',C',[-1;-1.1;-1.2])
-eig(A+K'*C)
+% From the s^1 term
+% 3 + 4a - b + 2c = 3
+% 4a - b + 2c = 0
 
-% I can get one eigenvalue to -1, but not all...
+% From the s^0 term
+% -4a + b - c - 1 = 1
+% -4a + b - c = 2
+
+coeffs = [-1 0 -1;
+          4 -1 2;
+          -4 1 -1];
+      
+nums = [6 0 2]';
+
+x = inv(coeffs)*nums
+
+eig(A+x*C)
+
+
 
 %% Part C
 f=[-9 -74 -24];
@@ -38,3 +52,8 @@ eig(A+B*f)
 
 % My controller is special. It takes in anything for y and returns f
 % That makes my controller stable.
+
+% u = f*xhat
+% xdothat = A*xhat + B*f*xhat + k*(yhat-y)
+% xdothat = A*xhat + B*f*xhat + k*C*xhat-k*y
+% xdothat = (A + B*f + k*C)*xhat - k*y
