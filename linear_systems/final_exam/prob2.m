@@ -18,3 +18,7 @@ for i=1:100
 
     disp(norm(P-newP))
 end
+
+% This showed me that adding a constant along the diagonal of A does not
+% change the solution to the A.R.E
+
